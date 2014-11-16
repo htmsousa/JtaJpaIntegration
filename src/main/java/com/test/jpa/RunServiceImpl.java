@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OtcRunServiceImpl implements OtcRunService {
+public class RunServiceImpl implements RunService {
 
 	@Autowired
-	private OtcRunDao otcRunDao;
+	private RunDao runDao;
 
 	@Transactional(value = Transactional.TxType.REQUIRES_NEW)
 	public void executeWithTransaction() {
-		OtcRun otcRun = new OtcRun();
-		otcRun.runId = 1;
-		otcRunDao.create(otcRun);
+		Run run = new Run();
+		run.runId = 1;
+		runDao.create(run);
 	}
 
 	@Transactional(value = Transactional.TxType.REQUIRES_NEW)
 	public void executeWithTransactionAndThrowException() {
-		OtcRun otcRun = new OtcRun();
-		otcRun.runId = 2;
-		otcRunDao.create(otcRun);
+		Run run = new Run();
+		run.runId = 2;
+		runDao.create(run);
 		throw new RuntimeException();
 	}
 

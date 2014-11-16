@@ -16,27 +16,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TestSpring extends SpringBasedTest {
 
 	@Autowired
-	private OtcRunService otcRunService;
+	private RunService runService;
 	@Autowired
-	private OtcRunDao otcRunDao;
+	private RunDao runDao;
 
 	@Test
 	@Transactional
 	public void test() {
-		List<OtcRun> findAll = otcRunDao.findAll();
+		List<Run> findAll = runDao.findAll();
 		assertEquals(0, findAll.size());
 
-		otcRunService.executeWithTransaction();
+		runService.executeWithTransaction();
 
-		findAll = otcRunDao.findAll();
+		findAll = runDao.findAll();
 		assertEquals(1, findAll.size());
 
 		try {
-			otcRunService.executeWithTransactionAndThrowException();
+			runService.executeWithTransactionAndThrowException();
 		} catch (RuntimeException e) {
 		}
 
-		Iterator<OtcRun> findAllIterator = otcRunDao.findAllIterator();
+		Iterator<Run> findAllIterator = runDao.findAllIterator();
 		assertTrue(findAllIterator.hasNext());
 		assertNotNull(findAllIterator.next());
 		assertFalse(findAllIterator.hasNext());

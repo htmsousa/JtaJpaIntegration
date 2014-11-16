@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class OtcRun {
+public class Run {
 
-	public OtcRun() {
+	public Run() {
 
 	}
 

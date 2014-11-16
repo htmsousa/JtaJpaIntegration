@@ -1,6 +1,6 @@
 package com.test.jpa;
 
-public interface OtcRunService {
+public interface RunService {
 
 	void executeWithTransaction();
 
